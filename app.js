@@ -1,4 +1,7 @@
+"use strict";
+
 console.log("Let's get this party started!");
+
 const BASE_URL = 'http://api.giphy.com/v1/gifs';
 const API_KEY = 'MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym';
 
