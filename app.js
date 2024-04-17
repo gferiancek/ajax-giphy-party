@@ -37,13 +37,14 @@ async function getGifUrl() {
   const gifs = await resp.json(); //FIXME: gifsData
 
   const amtOfGifs = gifs.data.length;
-  const randomIndex = Math.floor(Math.random() * (amtOfGifs)); //FIXME: decompos // Might be nice to have this as an array of gifs
+  const randomIndex = Math.floor(Math.random() * (amtOfGifs)); //FIXME: decomposs this to another function
+  //FIXME: Might be nice to have this as an array of gifs like the solution
 
-  const gifsUrl = gifs.data[randomIndex].images.downsized_medium.url; //FIXME: gifUrl
+  const gifsUrl = gifs.data[randomIndex].images.downsized_medium.url; //FIXME: gifUrl, not plural
 
   return gifsUrl;
 }
-//TODO: This can be broken down fetching the api data AND formatting the data
+//TODO: This can be broken down into a module.js as well 1) fetching the api data 2) formatting the data
 
 /** Display gif to DOM using url
  *    - url: String of gif url
