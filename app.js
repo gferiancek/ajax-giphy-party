@@ -4,6 +4,7 @@ const API_KEY = 'MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym';
 
 const $giphyForm = document.querySelector('#Giphy');
 const $giphyInput = document.querySelector('#Giphy-search');
+const $gifArea = document.querySelector('#Gifs');
 
 /** Sets Event Listener for form submission */
 function start() {
@@ -14,8 +15,8 @@ function start() {
 async function handleSubmission(evt) {
   evt.preventDefault();
 
-  const gif = await getGifUrl();
-  // Append to dom
+  const url = await getGifUrl();
+  showGif(url);
 }
 
 /** Makes AJAX call to Giphy api to get gif data
@@ -35,9 +36,21 @@ async function getGifUrl() {
 
   const randomIndex = Math.floor(Math.random() * (amtOfGifs + 1));
 
-  console.log("gif's url:", {data: gifs.data[8].embed_url});
-  const gifsUrl = gifs.data[randomIndex].embed_url;
+  console.log("gif's url:", { data: gifs.data[randomIndex].images.url });
+  const gifsUrl = gifs.data[randomIndex]
 
   return gifsUrl;
 }
+
+/** Display gif to DOM using url
+ *    - url: String of gif url
+ */
+function showGif(url) {
+  console.log('showGifs', { url });
+  const $img = document.createElement('img');
+  $img.src = url;
+
+  $gifArea.append($img);
+}
+
 export { start };
