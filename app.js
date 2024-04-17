@@ -27,17 +27,13 @@ async function getGifUrl() {
 
   const params = new URLSearchParams({ q: search, api_key: API_KEY });
 
-  const resp = await fetch(
-    `${BASE_URL}/search/?${params}`
-  );
+  const resp = await fetch(`${BASE_URL}/search/?${params}`);
   const gifs = await resp.json();
 
   const amtOfGifs = gifs.data.length;
+  const randomIndex = Math.floor(Math.random() * (amtOfGifs));
 
-  const randomIndex = Math.floor(Math.random() * (amtOfGifs + 1));
-
-  console.log("gif's url:", { data: gifs.data[randomIndex].images.url });
-  const gifsUrl = gifs.data[randomIndex]
+  const gifsUrl = gifs.data[randomIndex].images.downsized_medium.url
 
   return gifsUrl;
 }
